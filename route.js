@@ -69,7 +69,7 @@ const requestHandler = (req, res) => {
 }
 
 // 1. export a file
-module.exports = requestHandler // module is a keyword exposed globally to you by nodeJs, which has exports property. and we assign it a value that is our const function.
+module.exports = requestHandler; // module is a keyword exposed globally to you by nodeJs, which has exports property. and we assign it a value that is our const function.
 
 //2. export as object.
 /*
