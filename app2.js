@@ -39,7 +39,17 @@ const server = http.createServer((req, res) => {
 
     if(url === '/message' && method === 'POST')
     {
-        fs.writeFileSync('message.text','Hello this is file');
+        const body = [];
+        req.on('data', (chunk) => {
+            body.push(chunk);
+        });
+
+        req.on('end', () => {
+            const bufferBody = Buffer.concat(body).toString();
+            const message = bufferBody.split('=')[1];
+            fs.writeFileSync('message.text', message);
+        });
+    
         res.statusCode = 302;
         res.setHeader('Location','/')
         return res.end();
@@ -47,13 +57,16 @@ const server = http.createServer((req, res) => {
 
     if(url === '/')
     {
+        const reading = fs.readFileSync('./message.text');
+
         res.write('<HTML>');
         res.write('<head><title> My Header </title></head>');
-        res.write('<body><form action = "/message" method = "POST"><input type = "text"><button type = "submit"> Send </button></form></body>');
+        res.write(`<body> ${reading} <form action = "/message" id = "my-form" method = "POST"> <ul id = "my-list"> </ul> <input type = "text" name = "message"><button type = "submit"> Send </button></form></body>`);
         res.write('<HTML>');
     
-        res.end();
+        return res.end();
     }
+
 });
 
 server.listen(4000);
