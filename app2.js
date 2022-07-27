@@ -57,11 +57,12 @@ const server = http.createServer((req, res) => {
 
     if(url === '/')
     {
-        const reading = fs.readFileSync('./message.text');
+        const reading = fs.readFileSync('./message.txt'); // to read from file message.txt
 
         res.write('<HTML>');
         res.write('<head><title> My Header </title></head>');
         res.write(`<body> ${reading} <form action = "/message" id = "my-form" method = "POST"> <ul id = "my-list"> </ul> <input type = "text" name = "message"><button type = "submit"> Send </button></form></body>`);
+        // writing data read from file to body.
         res.write('<HTML>');
     
         return res.end();
