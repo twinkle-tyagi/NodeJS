@@ -1,0 +1,24 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app3.js",
+    "start-server": "node app3.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twinkle-tyagi/NodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/twinkle-tyagi/NodeJS/issues"
+  },
+  "homepage": "https://github.com/twinkle-tyagi/NodeJS#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

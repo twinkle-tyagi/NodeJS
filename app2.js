@@ -47,7 +47,7 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             const bufferBody = Buffer.concat(body).toString();
             const message = bufferBody.split('=')[1];
-            fs.writeFileSync('message.text', message);
+            fs.writeFileSync('message1.txt', message);
         });
     
         res.statusCode = 302;
@@ -57,7 +57,7 @@ const server = http.createServer((req, res) => {
 
     if(url === '/')
     {
-        const reading = fs.readFileSync('./message.txt'); // to read from file message.txt
+        const reading = fs.readFileSync('./message1.txt'); // to read from file message.txt
 
         res.write('<HTML>');
         res.write('<head><title> My Header </title></head>');

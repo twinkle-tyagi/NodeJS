@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const requestHandler = (req, res) => {
+const requestHandler1 = (req, res) => {
     
     const url = req.url;
     const method = req.method;
@@ -45,7 +45,7 @@ const requestHandler = (req, res) => {
         req.on('end', () => {
             const bufferBody = Buffer.concat(body).toString();
             const message = bufferBody.split('=')[1];
-            fs.writeFileSync('message.text', message);
+            fs.writeFileSync('./message1.txt', message);
         });
     
         res.statusCode = 302;
@@ -57,8 +57,8 @@ const requestHandler = (req, res) => {
     {
         res.setHeader('Content-Type','text/html');
 
-        const reading = fs.readFileSync('./message.text'); // to read from file message.txt
-
+        const reading = fs.readFileSync('./message1.txt'); // to read from file message.txt
+        
         res.write('<HTML>');
         res.write('<head><title> My Header </title></head>');
         res.write(`<body> ${reading} <form action = "/message" id = "my-form" method = "POST"> <ul id = "my-list"> </ul> <input type = "text" name = "message"><button type = "submit"> Send </button></form></body>`);
@@ -80,5 +80,7 @@ module.exports = {
 //module.exports.handler = requestHandler;
 //module.exports.someText = "yes now";
 
-exports.handler = requestHandler;
-exports.someText = "yes now";
+exports.handler = requestHandler1;
+exports.someText = "Hey there";
+
+
